@@ -1,19 +1,16 @@
 const express=require('express')
 const models=require('./../models')
+const AnimeController=require('./../controllers/AnimeController')
 const anime=express.Router()
 
-anime.get('/',(req,res)=>{
-    models.Anime.findAll().then((animes)=>{
-        res.json(animes)
-    })
-})
+anime.get('/',AnimeController.getAnimes)
 
-anime.get('/:id',(req,res)=>{
-    models.Anime.findById(req.params.id).then(anime=>{
-        res.json(anime)
-    }).catch(err=>{
-        res.json(err)
-    })
-})
+anime.get('/:id',AnimeController.getAnimeById)
+
+anime.post('/',AnimeController.createAnime)
+
+anime.put('/:id',AnimeController.updateAnime)
+
+anime.delete('/:id',AnimeController.deleteAnime)
 
 module.exports=anime
