@@ -26,6 +26,8 @@ const AnimeController={
 
     updateAnime:(req,res)=>{
         models.Anime.findById(req.params.id).then(anime=>{
+            return anime
+        }).then((anime)=>{
             anime.name=req.body.name
             anime.img_src=req.body.img_src
             anime.save().then((anime)=>{

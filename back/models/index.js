@@ -12,7 +12,8 @@ sequelize
     })
 // load models
 var models = [
-  'Anime'
+  'Anime',
+  'Genere'
 ]
 models.forEach(function(model) {
   module.exports[model] = sequelize.import(__dirname + '/' + model);
