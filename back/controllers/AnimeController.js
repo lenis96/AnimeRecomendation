@@ -25,11 +25,27 @@ const AnimeController={
     },
 
     updateAnime:(req,res)=>{
-        res.json(req.body)
+        models.Anime.findById(req.params.id).then(anime=>{
+            anime.name=req.body.name
+            anime.img_src=req.body.img_src
+            anime.save().then((anime)=>{
+                res.json(anime)
+            }).catch((err)=>{
+                res.json(err)
+            })
+        }).catch((err)=>{
+            res.json(err)
+        })
     },
 
     deleteAnime:(req,res)=>{
-        res.json({message:'anime deleted'})
+        models.Anime.destroy({
+            where: {
+              id: req.params.id
+            }
+          }).then((e)=>{
+              res.json(e)
+          })
     }
 
 }
