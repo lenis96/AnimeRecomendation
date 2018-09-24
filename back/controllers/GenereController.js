@@ -2,7 +2,7 @@ const models=require('./../models')
 const GenereController={
     getGeneres:(req,res)=>{
         models.Genere.findAll().then(generes=>{
-            res.json(generes)
+            res.json({generes:generes})
         }).catch((err)=>{
 
         })

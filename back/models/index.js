@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-
+// http://www.redotheweb.com/2013/02/20/sequelize-the-javascript-orm-in-practice.html
 // initialize database connection
  const sequelize = new Sequelize('mysql://root:@localhost:3306/recomendation_system',{logging:false});
 sequelize

@@ -2,7 +2,7 @@ const models=require('./../models')
 const AnimeController={
     getAnimes:(req,res)=>{
         models.Anime.findAll().then(animes=>{
-            res.json(animes)
+            res.json({animes:animes})
         }).catch((err)=>{
 
         })
