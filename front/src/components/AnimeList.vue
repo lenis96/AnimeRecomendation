@@ -1,11 +1,7 @@
 <template>
-<div>
-
-    <ul>
-        <!-- <li v-for="anime in animes" :key="anime.name">{{anime.name}}</li> -->
+    <div>
         <AnimeItem :name="anime.name" v-for="anime in animes" :key="anime.name"/>
-    </ul>
-</div>
+    </div>
 </template>
 
 <script>

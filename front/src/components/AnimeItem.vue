@@ -1,14 +1,19 @@
 <template>
-<div>
-    <img :src="image" alt="">
-    <li>{{name}}</li>
-</div>
+    <div class="item">
+        <div class="intern">
+            <img :src="image" alt="">
+        </div>
+        <div class="intern">
+            <label for=""><a href="">{{name}}</a></label>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
     props:{
-        name:String
+        name:String,
+        imageSrc:String
     },
     name:'animeItem',
     data(){
@@ -21,6 +26,15 @@ export default {
 </script>
 
 <style>
+    .item{
+        background-color: #ddd; 
+        width: 300px;
+        margin: 10px;
+        display: inline-block;
+    }
+    .intern{
+        display: inline;
+    }
     img{
         width:200px;
         /* height: 100px; */
