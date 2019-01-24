@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="intern">
-      <img :src="imageSrc" alt>
+      <img :src="img_src" alt>
     </div>
     <div class="intern">
       <label for>
@@ -16,7 +16,7 @@
 export default {
   props: {
     name: String,
-    imageSrc: String
+    img_src: String
   },
   methods: {
     handler: () => {

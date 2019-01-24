@@ -5,9 +5,7 @@
         <h1>Anime Recomendation</h1>
       </div>
       <div class="left">
-        <ul>
-          <a href="/anime">Anime</a>
-        </ul>
+        <Nav/>
       </div>
     <!-- <img src="./assets/logo.png"> -->
     <div class="content">
@@ -20,9 +18,10 @@
 
 <script>
 import './css/style.css'
-
+import Nav from './components/Nav'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Nav}
 }
 </script>
 
