@@ -1,20 +1,15 @@
 <template>
   <div>
-    <AnimeItem
-      :name="anime.name"
-      :img_src="anime.img_src"
-      v-for="anime in animes"
-      :key="anime.name"
-    />
+    <AnimeItem :name="anime.name" :img_src="anime.img_src" v-for="anime in animes" :key="anime.id"/>
   </div>
 </template>
 
 <script>
 import AnimeItem from './AnimeItem'
-import { getAnimes } from './../utils/api'
+import {getAnimes} from './../utils/api'
 export default {
   name: 'AnimeList',
-  components: { AnimeItem },
+  components: {AnimeItem},
   data () {
     return {
       animes: []
