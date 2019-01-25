@@ -4,17 +4,17 @@
       <img :src="img_src" alt>
     </div>
     <div class="intern">
-      <label for>
-        <a href>{{name}}</a>
-      </label>
+      <router-link :to="`/animeForm/${id}`">
+        <a>{{name}}</a>
+      </router-link>
     </div>
-    <a href="#">Edit</a>
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    id: Number,
     name: String,
     img_src: String
   },

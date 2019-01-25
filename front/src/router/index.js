@@ -23,6 +23,12 @@ export default new Router({
       path: '/animeForm',
       name: 'AnimeForm',
       component: AnimeForm
+    },
+    {
+      path: '/animeForm/:id',
+      name: 'AnimeFormById',
+      component: AnimeForm,
+      props: true
     }
   ]
 })

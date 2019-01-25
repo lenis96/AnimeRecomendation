@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AnimeItem :name="anime.name" :img_src="anime.img_src" v-for="anime in animes" :key="anime.id"/>
+    <AnimeItem :name="anime.name" :id="anime.id" :img_src="anime.img_src" v-for="anime in animes" :key="anime.id"/>
   </div>
 </template>
 
