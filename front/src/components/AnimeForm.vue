@@ -7,17 +7,26 @@
     <label for='img_src'>Image Source:</label>
     <input v-model='img_src' name='img_src' type='text'>
     <br>
-    <button v-on:click='handleSubmmit'>Add Anime</button>
+    <div class='intern'>
+      <img :src='img_src' alt>
+    </div>
+    <br>
+    <button v-if='id==null' v-on:click='handleSubmmit'>Add Anime</button>
+    <button v-else v-on:click='handleSubmmit'>Update Anime</button>
+
+    <button v-if='id!=null' v-on:click='deleteAnime'>Delete Anime</button>
+    <button v-if='showConfirmation' v-on:click='confirmDelete'>Confirmation Deltete</button>
   </form>
 </template>
 <script>
-import { createAnime, getAnimeById, updateAnimeById } from './../utils/api'
+import { createAnime, getAnimeById, updateAnimeById, deleteAnimeById } from './../utils/api'
 export default {
   name: 'AnimeForm',
   data: () => {
     return {
       name: '',
-      img_src: ''
+      img_src: '',
+      showConfirmation: false
     }
   },
   props: ['id'],
@@ -27,6 +36,9 @@ export default {
         this.name = res.data.name
         this.img_src = res.data.img_src
       })
+    } else {
+      this.name = ''
+      this.img_src = ''
     }
   },
   methods: {
@@ -36,11 +48,29 @@ export default {
         createAnime(anime).then(res => {
           this.name = ''
           this.img_src = ''
+          this.$router.push('/anime')
         })
       } else {
         updateAnimeById(this.id, anime).then(res => {})
       }
+    },
+    deleteAnime: function (event) {
+      this.showConfirmation = true
+    },
+    confirmDelete: function (event) {
+      deleteAnimeById(this.id).then(res => {
+        this.$router.push('/anime')
+      })
     }
   }
 }
 </script>
+<style>
+.intern {
+  display: inline
+}
+img {
+  width: 200px
+  /* height: 100px */
+}
+</style>
