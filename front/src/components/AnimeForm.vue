@@ -11,11 +11,11 @@
       <img :src='img_src' alt>
     </div>
     <br>
-    <button v-if='id==null' v-on:click='handleSubmmit'>Add Anime</button>
-    <button v-else v-on:click='handleSubmmit'>Update Anime</button>
+    <md-button class="md-raised md-primary" v-if='id==null' v-on:click='handleSubmmit'>Add Anime</md-button>
+    <md-button class="md-raised md-primary" v-else v-on:click='handleSubmmit'>Update Anime</md-button>
 
-    <button v-if='id!=null' v-on:click='deleteAnime'>Delete Anime</button>
-    <button v-if='showConfirmation' v-on:click='confirmDelete'>Confirmation Deltete</button>
+    <md-button class="md-raised md-primary" v-if='id!=null' v-on:click='deleteAnime'>Delete Anime</md-button>
+    <md-button class="md-raised md-primary" v-if='showConfirmation' v-on:click='confirmDelete'>Confirmation Deltete</md-button>
   </form>
 </template>
 <script>
@@ -51,7 +51,9 @@ export default {
           this.$router.push('/anime')
         })
       } else {
-        updateAnimeById(this.id, anime).then(res => {})
+        updateAnimeById(this.id, anime).then(res => {
+          this.$router.push('/anime')
+        })
       }
     },
     deleteAnime: function (event) {

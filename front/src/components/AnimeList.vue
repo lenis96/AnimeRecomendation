@@ -1,6 +1,11 @@
 <template>
   <div>
-    <AnimeItem :name="anime.name" :id="anime.id" :img_src="anime.img_src" v-for="anime in animes" :key="anime.id"/>
+    <div v-if="!loading">
+      <AnimeItem :name="anime.name" :id="anime.id" :img_src="anime.img_src" v-for="anime in animes" :key="anime.id"/>
+    </div>
+    <div v-else>
+      <h2>Loading...</h2>
+    </div>
   </div>
 </template>
 
@@ -12,13 +17,16 @@ export default {
   components: {AnimeItem},
   data () {
     return {
-      animes: []
+      animes: [],
+      loading: false
     }
   },
   mounted () {
+    this.loading = true
     getAnimes()
       .then(res => {
         this.animes = res.data.animes
+        this.loading = false
       })
       .catch(() => {})
   }
